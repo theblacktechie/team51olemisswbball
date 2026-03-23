@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What They Gave · Team 51 · Ole Miss WBB 2025-26</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400;1,14..32,500;1,14..32,700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --red:       #CE1126;
+    --navy:      #14213D;
+    --white:     #FFFFFF;
+    --cream:     #F7F6F4;
+    --border:    #E2E2DF;
+    --gray-text: #5A5A5A;
+    --gray-lt:   #9A9A97;
+    --red-pale:  rgba(206,17,38,0.05);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .top-stripe { height: 4px; background: linear-gradient(90deg, var(--red) 0%, var(--red) 55%, var(--navy) 100%); }
+
+  /* ── MASTHEAD ── */
+  .masthead { padding: 40px 6vw 36px; border-bottom: 1px solid var(--border); text-align: center; }
+  .mast-kicker { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--red); margin-bottom: 5px; }
+  .mast-season-word { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; opacity: 0.6; }
+  .mast-season-word span { color: var(--red); opacity: 1; }
+  .mast-headline { font-size: clamp(36px, 7vw, 84px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.92; color: var(--navy); margin-bottom: 18px; }
+  .mast-headline .accent { color: var(--red); }
+  /* paragraph: wide enough to read as 2 natural lines */
+  .mast-dek { font-size: 15px; font-weight: 400; color: var(--gray-text); line-height: 1.75; max-width: 760px; margin: 0 auto 28px; }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 0; align-items: flex-end; justify-content: center; }
+  .stat-block { padding: 0 28px 0 0; margin-right: 28px; border-right: 1px solid var(--border); }
+  .stat-block:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .stat-num { font-size: clamp(22px, 3vw, 32px); font-weight: 900; letter-spacing: -0.035em; line-height: 1; margin-bottom: 4px; }
+  .stat-num.red  { color: var(--red); }
+  .stat-num.navy { color: var(--navy); }
+  .stat-label { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray-lt); }
+
+  /* ── TAB NAV ── */
+  .tab-nav { display: grid; grid-template-columns: repeat(5, 1fr); background: var(--white); border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .tab-btn { padding: 20px 8px 16px; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; background: transparent; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; transition: background 0.12s; }
+  .tab-btn:hover { background: var(--cream); }
+  .tab-btn.active { border-bottom-color: var(--red); }
+  .tab-btn.active .tab-act { color: var(--red); }
+  .tab-btn.active .tab-title { color: var(--navy); font-weight: 800; }
+  .tab-act { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-lt); transition: color 0.12s; }
+  .tab-title { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-text); line-height: 1.3; text-align: center; transition: color 0.12s, font-weight 0.12s; }
+
+  /* ── PANELS ── */
+  .panel { display: none; padding: 48px 6vw 0; }
+  .panel.active { display: block; }
+  .act-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; text-align: center; }
+  .panel-h2 { font-size: clamp(24px, 4.2vw, 50px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08; color: var(--navy); margin-bottom: 14px; text-align: center; }
+  /* 1-line intro — nowrap on desktop */
+  .panel-intro-1line { font-size: clamp(11px, 1.3vw, 14px); color: var(--gray-text); line-height: 1.7; margin-bottom: 36px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .panel-intro { font-size: 14px; color: var(--gray-text); line-height: 1.78; max-width: 680px; margin: 0 auto 40px; text-align: center; }
+  .section-rule { width: 36px; height: 3px; background: var(--red); margin: 32px auto; }
+
+  /* ── GIVE PANEL ── */
+  .give-word { font-size: clamp(68px, 13vw, 148px); font-weight: 900; letter-spacing: -0.055em; line-height: 0.86; color: var(--navy); margin-bottom: 5px; user-select: none; text-align: center; }
+  .give-word .g { color: var(--red); }
+  .give-sub { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 28px; text-align: center; }
+  /* 3-line body */
+  .give-body { font-size: 15px; font-weight: 400; color: var(--gray-text); line-height: 1.8; max-width: 720px; margin: 0 auto 40px; text-align: center; }
+  .give-body strong { color: var(--navy); font-weight: 700; }
+
+  /* Give Revolution section */
+  .give-revolution { max-width: 900px; margin: 0 auto 40px; }
+  .gr-head { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; text-align: center; }
+  .gr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .gr-cell { background: var(--white); padding: 24px 20px; text-align: center; }
+  .gr-val { font-size: clamp(28px, 4vw, 44px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+  .gr-val.red  { color: var(--red); }
+  .gr-val.navy { color: var(--navy); }
+  .gr-desc { font-size: 11.5px; color: var(--gray-text); line-height: 1.55; }
+
+  /* STAT STRIP */
+  .stat-strip { display: flex; flex-wrap: wrap; gap: 0; align-items: flex-end; justify-content: center; margin-bottom: 40px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .ss-item { padding: 0 24px 0 0; margin-right: 24px; border-right: 1px solid var(--border); }
+  .ss-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .ss-val { font-size: clamp(18px, 2.2vw, 26px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; margin-bottom: 3px; }
+  .ss-val.red  { color: var(--red); }
+  .ss-val.navy { color: var(--navy); }
+  .ss-lbl { font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-lt); }
+
+  /* ── PULL QUOTE — centered ── */
+  .pull-quote { border-left: 3px solid var(--red); padding: 16px 26px; margin: 0 auto; max-width: 720px; background: var(--red-pale); }
+  .pull-quote + .pull-quote { margin-top: 12px; }
+  .pq-text { font-size: clamp(12px, 1.5vw, 14.5px); font-weight: 500; font-style: italic; color: var(--navy); line-height: 1.68; margin-bottom: 9px; }
+  .pq-attr { font-size: 8.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray-lt); }
+  .quotes-wrap { display: flex; flex-direction: column; gap: 12px; margin-bottom: 0; }
+
+  /* ── ARC GRID ── */
+  .arc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
+  .arc-card { background: var(--white); padding: 18px 16px; border-top: 3px solid transparent; transition: border-color 0.15s, background 0.15s; display: flex; flex-direction: column; }
+  .arc-card:hover { background: var(--red-pale); border-top-color: var(--red); }
+  .arc-date { font-size: 8.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 6px; }
+  .arc-chip { display: inline-block; font-size: 7.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 7px; margin-bottom: 7px; align-self: flex-start; }
+  .arc-chip.win   { background: var(--red);   color: var(--white); }
+  .arc-chip.loss  { background: var(--navy);  color: var(--white); }
+  .arc-chip.note  { background: var(--cream); color: var(--navy);  border: 1px solid var(--border); }
+  .arc-chip.storm { background: var(--navy);  color: rgba(255,255,255,0.85); }
+  .arc-head { font-size: 12.5px; font-weight: 800; letter-spacing: -0.015em; color: var(--navy); line-height: 1.25; margin-bottom: 6px; }
+  .arc-copy { font-size: 11px; color: var(--gray-text); line-height: 1.65; flex: 1; }
+  .arc-copy em { font-style: italic; color: var(--navy); }
+  .arc-score { display: inline-block; margin-top: 9px; font-size: 16px; font-weight: 900; letter-spacing: -0.03em; color: var(--navy); }
+  .arc-score .vs { font-size: 10px; font-weight: 500; color: var(--gray-lt); margin-left: 5px; }
+
+  /* ── SENIORS GRID — 4 col, jersey order, Cotie spans 2 at end ── */
+  .seniors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .sc-card { background: var(--white); padding: 22px 18px 18px; border-top: 3px solid transparent; transition: border-color 0.18s, background 0.18s; position: relative; display: flex; flex-direction: column; }
+  .sc-card:hover { border-top-color: var(--red); background: var(--red-pale); }
+  .sc-card.featured { grid-column: span 2; border-top: 3px solid var(--red); }
+  .sc-card.featured .sc-name { font-size: 22px; }
+  .sc-origin { position: absolute; top: 11px; right: 13px; font-size: 7.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gray-lt); }
+  .sc-pos { font-size: 8.5px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+  .sc-name { font-size: 17px; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); line-height: 1.1; margin-bottom: 10px; }
+  .sc-gave { font-size: 11.5px; color: var(--gray-text); line-height: 1.65; margin-bottom: 12px; flex: 1; }
+  .sc-gave em { font-style: italic; color: var(--navy); }
+  .sc-nums { display: flex; gap: 14px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid var(--border); }
+  .sc-n { display: flex; flex-direction: column; gap: 3px; }
+  .sc-n-val { font-size: 17px; font-weight: 900; letter-spacing: -0.03em; color: var(--red); line-height: 1; }
+  .sc-n-lbl { font-size: 7.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--gray-lt); }
+
+  /* ── ACT IV SCOREBOARD ── */
+  .scoreboard { display: flex; align-items: center; justify-content: center; gap: 0; border: 2px solid var(--border); max-width: 520px; margin: 0 auto 24px; }
+  .sb-side { flex: 1; padding: 28px 24px; text-align: center; }
+  .sb-side.ours   { background: var(--red-pale); border-right: 1px solid var(--border); }
+  .sb-side.theirs { background: var(--cream);    border-left:  1px solid var(--border); }
+  .sb-school { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 7px; }
+  .sb-pts { font-size: clamp(48px, 9vw, 76px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
+  .ours .sb-pts   { color: var(--red); }
+  .theirs .sb-pts { color: var(--navy); }
+  .sb-mid { flex-shrink: 0; padding: 0 20px; text-align: center; }
+  .sb-final   { font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-text); margin-bottom: 5px; }
+  .sb-context { font-size: 13px; font-weight: 500; color: var(--gray-lt); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* QUARTER TABLE — larger */
+  .quarter-line { display: grid; grid-template-columns: 110px repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: 540px; margin: 0 auto 30px; }
+  .ql-cell { background: var(--white); padding: 12px 8px; text-align: center; color: var(--navy); font-size: 14px; font-weight: 600; }
+  .ql-cell.hdr { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-lt); background: var(--cream); }
+  .ql-cell.team-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-lt); background: var(--cream); text-align: left; padding-left: 14px; }
+  .ql-cell.our-score  { color: var(--red); font-weight: 800; }
+  .ql-cell.total-score { font-weight: 900; }
+
+  /* MOMENT GRID — 4 on 1 row */
+  .moment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: 960px; margin: 0 auto 32px; }
+  .moment-card { background: var(--white); padding: 20px 16px; }
+  .moment-marker { font-size: 22px; font-weight: 900; letter-spacing: -0.04em; color: var(--red); line-height: 1; margin-bottom: 9px; }
+  .moment-text { font-size: 12px; color: var(--gray-text); line-height: 1.68; }
+  .moment-text strong { color: var(--navy); font-weight: 700; }
+
+  /* KEY STATS */
+  .key-stats { display: flex; flex-wrap: wrap; gap: 0; align-items: flex-end; justify-content: center; margin: 0 auto 32px; max-width: 960px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .ks-item { padding: 0 28px 0 0; margin-right: 28px; border-right: 1px solid var(--border); }
+  .ks-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+  .ks-val { font-size: clamp(20px, 2.8vw, 34px); font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 5px; }
+  .ks-val.red  { color: var(--red); }
+  .ks-val.navy { color: var(--navy); }
+  .ks-desc { font-size: 11px; color: var(--gray-text); line-height: 1.5; max-width: 150px; }
+
+  /* ── ACT V ── */
+  .closing-give { font-size: clamp(68px, 14vw, 160px); font-weight: 900; letter-spacing: -0.055em; line-height: 0.86; color: var(--red); margin-bottom: 40px; user-select: none; text-align: center; }
+  .closing-prose { font-size: clamp(13.5px, 1.6vw, 16.5px); color: var(--gray-text); line-height: 1.88; max-width: 660px; margin: 0 auto; }
+  .closing-prose p { margin-bottom: 22px; }
+  .closing-prose strong { color: var(--navy); font-weight: 700; }
+  .closing-prose .p-red  { color: var(--red);  font-weight: 700; }
+  .closing-prose .p-navy { color: var(--navy); font-weight: 700; }
+  /* all on one line */
+  .closing-final { font-size: clamp(13px, 1.8vw, 18px); font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); margin: 0 auto 22px; max-width: 900px; line-height: 1.4; white-space: nowrap; text-align: center; }
+  .hotty-line { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red); text-align: center; margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  .footer { padding: 20px 6vw; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; gap: 8px; background: var(--white); margin-top: 48px; text-align: center; }
+  .footer-copy { font-size: 10.5px; color: var(--gray-lt); line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+  .footer-copy strong { color: var(--gray-text); font-weight: 700; }
+  .footer-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    .seniors-grid { grid-template-columns: repeat(2, 1fr); }
+    .sc-card.featured { grid-column: span 2; }
+    .arc-grid { grid-template-columns: repeat(2, 1fr); }
+    .gr-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .moment-grid { grid-template-columns: repeat(2, 1fr); }
+    .panel-intro-1line { white-space: normal; font-size: 13px; }
+    .closing-final { white-space: normal; font-size: 16px; }
+    .quarter-line { grid-template-columns: 72px repeat(5, 1fr); }
+    .ql-cell { font-size: 12px; padding: 10px 5px; }
+  }
+  @media (max-width: 560px) {
+    .seniors-grid { grid-template-columns: 1fr; }
+    .sc-card.featured { grid-column: span 1; }
+    .arc-grid { grid-template-columns: 1fr; }
+    .gr-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-row, .stat-strip, .key-stats { gap: 14px; justify-content: flex-start; }
+    .stat-block, .ss-item, .ks-item { border-right: none; padding-right: 0; margin-right: 0; }
+    .masthead { text-align: left; }
+    .stat-row { justify-content: flex-start; }
+    .act-label, .panel-h2, .give-word, .give-sub, .give-body, .panel-intro, .panel-intro-1line, .gr-head { text-align: left; }
+    .pull-quote { margin-left: 0; margin-right: 0; }
+    .closing-final, .hotty-line, .closing-give { text-align: left; }
+    .tab-title { font-size: 11px; }
+    .scoreboard { flex-direction: column; }
+    .sb-side { width: 100%; border-right: none; border-left: none; }
+    .sb-side.ours { border-bottom: 1px solid var(--border); }
+    .sb-mid { padding: 12px 0; }
+    .sb-final, .sb-context { display: inline; }
+    .sb-final::after { content: ' · '; }
+    .mast-dek { font-size: 14px; }
+    .moment-grid { grid-template-columns: 1fr; }
+    .quarter-line { grid-template-columns: 64px repeat(5, 1fr); }
+    .ql-cell { font-size: 11px; padding: 9px 4px; }
+    .footer-copy { font-size: 10px; white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-stripe"></div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="mast-kicker">Ole Miss WBB · Team 51 · Season Retrospective · 2025-26</div>
+  <div class="mast-season-word">Their word for the 2025-2026 season: <span>GIVE</span></div>
+  <div class="mast-headline">What They <span class="accent">Gave</span></div>
+  <p class="mast-dek">Seven seniors. Seven portal stories. Five straight NCAA Tournaments. One season that came down to 0.8 seconds in Minneapolis. This is what Team 51 gave Oxford and everyone watching.</p>
+  <div class="stat-row">
+    <div class="stat-block"><div class="stat-num red">24-12</div><div class="stat-label">Final Record</div></div>
+    <div class="stat-block"><div class="stat-num navy">5th</div><div class="stat-label">Straight Tournament</div></div>
+    <div class="stat-block"><div class="stat-num red">7</div><div class="stat-label">Portal Seniors</div></div>
+    <div class="stat-block"><div class="stat-num navy">0.8</div><div class="stat-label">Seconds. That's All.</div></div>
+  </div>
+</header>
+
+<!-- TAB NAV -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="switchTab(0)"><span class="tab-act">I</span><span class="tab-title">Give</span></button>
+  <button class="tab-btn" onclick="switchTab(1)"><span class="tab-act">II</span><span class="tab-title">The Arc</span></button>
+  <button class="tab-btn" onclick="switchTab(2)"><span class="tab-act">III</span><span class="tab-title">Seven Gifts</span></button>
+  <button class="tab-btn" onclick="switchTab(3)"><span class="tab-act">IV</span><span class="tab-title">0.8 Seconds</span></button>
+  <button class="tab-btn" onclick="switchTab(4)"><span class="tab-act">V</span><span class="tab-title">Hotty Toddy</span></button>
+</nav>
+
+<!-- ══ PANEL I · GIVE ══ -->
+<div class="panel active" id="panel-0">
+  <div class="give-word"><span class="g">G</span>IVE</div>
+  <div class="give-sub">The word. The season. Team 51.</div>
+  <p class="give-body">One word. Chosen before the season started. A north star for a team built almost entirely through the transfer portal, led by a coach who turned a program from 0-14 in the SEC to five straight NCAA Tournaments. <strong>Team 51 gave every possession, every game, every night, including the last one.</strong></p>
+
+  <div class="stat-strip">
+    <div class="ss-item"><div class="ss-val red">24</div><div class="ss-lbl">Wins this season</div></div>
+    <div class="ss-item"><div class="ss-val navy">5th</div><div class="ss-lbl">Straight NCAA Tournament</div></div>
+    <div class="ss-item"><div class="ss-val red">7</div><div class="ss-lbl">Portal seniors</div></div>
+    <div class="ss-item"><div class="ss-val navy">2,038</div><div class="ss-lbl">McMahon career points</div></div>
+    <div class="ss-item"><div class="ss-val red">89</div><div class="ss-lbl">Points vs Vanderbilt</div></div>
+    <div class="ss-item"><div class="ss-val navy">0.8</div><div class="ss-lbl">Seconds from a Sweet 16</div></div>
+  </div>
+
+  <div class="give-revolution">
+    <div class="gr-head">The Revolution · What Coach Yo Built</div>
+    <div class="gr-grid">
+      <div class="gr-cell">
+        <div class="gr-val red">0-14</div>
+        <div class="gr-desc">SEC record in the 2019-20 season. Where it started.</div>
+      </div>
+      <div class="gr-cell">
+        <div class="gr-val navy">5</div>
+        <div class="gr-desc">Consecutive NCAA Tournaments under Coach Yo's leadership.</div>
+      </div>
+      <div class="gr-cell">
+        <div class="gr-val red">3</div>
+        <div class="gr-desc">Round of 32 appearances in the last four years.</div>
+      </div>
+      <div class="gr-cell">
+        <div class="gr-val navy">17th</div>
+        <div class="gr-desc">Ranked win of the McPhee-McCuin era after toppling No. 5 Vanderbilt in Birmingham.</div>
+      </div>
+      <div class="gr-cell">
+        <div class="gr-val red">2x</div>
+        <div class="gr-desc">Top-5 wins this season, matching a feat last done at Ole Miss in 1995-96.</div>
+      </div>
+      <div class="gr-cell">
+        <div class="gr-val navy">8x</div>
+        <div class="gr-desc">Times Ole Miss held opponents under 50 points this season.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quotes-wrap">
+    <div class="pull-quote">
+      <div class="pq-text">"I don't know if I've ever seen anything like that. Cotie's a generational player. She's the only star player that I've had that I can really get on and they never give me any lip back. She lets me coach her. And I appreciate that about her."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Postgame vs Tennessee · Feb 17, 2026 · Source: The Dispatch</div>
+    </div>
+    <div class="pull-quote">
+      <div class="pq-text">"Cotie should be in the discussions for SEC Player of the Year and National Player of the Year Awards. She's in discussion with most WNBA teams because she's just a really special player. People scheme against her, and she just finds a way to score."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Postgame vs Auburn, Birmingham · Feb 2, 2026 · Source: 247Sports</div>
+    </div>
+    <div class="pull-quote">
+      <div class="pq-text">"Really like what Christeen is doing. She is a true example of how what you do in the dark will come out in the light. I think she is going to be one of the best posts in the SEC."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Postgame vs Southern · Nov 13, 2025 · Source: The Rebel Walk</div>
+    </div>
+  </div>
+  <div style="height:0;"></div>
+</div>
+
+<!-- ══ PANEL II · THE ARC ══ -->
+<div class="panel" id="panel-1">
+  <div class="act-label">Act II · The Arc</div>
+  <h2 class="panel-h2">How The Season Unfolded</h2>
+  <p class="panel-intro-1line">A portal rebuild. Winter Storm Fern. A 39-point eruption. Senior Day. Three nights in Greenville. One last dance in Minneapolis.</p>
+
+  <div class="arc-grid">
+    <div class="arc-card">
+      <div class="arc-date">Nov 2025</div>
+      <div class="arc-chip note">Season Opens</div>
+      <div class="arc-head">Eight transfers. One identity.</div>
+      <div class="arc-copy">Coach Yo rebuilt almost entirely through the portal. The question wasn't talent, it was chemistry. Oxford answered fast.</div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Jan 25-26, 2026</div>
+      <div class="arc-chip storm">Winter Storm Fern</div>
+      <div class="arc-head">Ice shuts down Oxford. The team doesn't blink.</div>
+      <div class="arc-copy">300,000 Mississippians lost power. Oxford was paralyzed by ice and downed power lines. The Tennessee game was postponed. The Vanderbilt and Auburn games were relocated to Birmingham. Ole Miss didn't go home.</div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Jan 30, 2026</div>
+      <div class="arc-chip win">Birmingham Game 1</div>
+      <div class="arc-head">Down No. 5 Vanderbilt. In Birmingham.</div>
+      <div class="arc-copy">83-75. McMahon 27 pts. Iwuala 18 pts, 14 reb, 72.7% FG. Coach Yo's 17th ranked win as a Rebel. Ole Miss extended their series win streak over Vanderbilt to six games, a program record.</div>
+      <div class="arc-score">83-75 <span class="vs">vs Vanderbilt</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Feb 2, 2026</div>
+      <div class="arc-chip win">Birmingham Game 2</div>
+      <div class="arc-head">Roll Auburn. Stay on the road.</div>
+      <div class="arc-copy">71-45. McMahon 20 pts. Iwuala double-double. Ole Miss outrebounded Auburn 51-23. When asked if they wanted to go home, the team said no. <em>"They like each other, and they're focused on their goals."</em></div>
+      <div class="arc-score">71-45 <span class="vs">vs Auburn</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Feb 17, 2026</div>
+      <div class="arc-chip win">Career Night</div>
+      <div class="arc-head">McMahon drops 39 on Tennessee.</div>
+      <div class="arc-copy">A new career high. Fifth Rebel in program history to cross 2,000 career points. The engine announces itself to the entire country.</div>
+      <div class="arc-score">39 <span class="vs">PTS vs Tennessee</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Feb-Mar 2026</div>
+      <div class="arc-chip loss">Adversity</div>
+      <div class="arc-head">Thienou goes down. The team adjusts.</div>
+      <div class="arc-copy">A bone bruise sidelines the press's engine for weeks. A four-game skid. Coach Yo: <em>"Other people had to step up and it allowed us to build our bench for times like that."</em></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 1, 2026</div>
+      <div class="arc-chip note">Senior Day</div>
+      <div class="arc-head">Seven seniors. One Oxford afternoon.</div>
+      <div class="arc-copy">SJB Pavilion gave them everything back. Christeen. Cotie. Kaitlin. Denim. Debreasha. Latasha. Jayla. Oxford wasn't ready to say goodbye.</div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 5, 2026</div>
+      <div class="arc-chip win">SEC Tournament R1</div>
+      <div class="arc-head">Auburn never had a chance.</div>
+      <div class="arc-copy">Night one in Greenville. Dictate &amp; Disrupt from the opening tip. Dominant wire-to-wire.</div>
+      <div class="arc-score">73-57 <span class="vs">vs Auburn</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 6, 2026</div>
+      <div class="arc-chip win">SEC Tournament QF</div>
+      <div class="arc-head">89 points. A statement night.</div>
+      <div class="arc-copy">Third-highest tournament output in program history. One of the most complete offensive performances Oxford has ever produced.</div>
+      <div class="arc-score">89-78 <span class="vs">vs Vanderbilt</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 7, 2026</div>
+      <div class="arc-chip loss">SEC Tournament SF</div>
+      <div class="arc-head">Madison Booker was simply better.</div>
+      <div class="arc-copy">29 pts, 65% FG. Ole Miss rallied in Q3 (23-15) but could not close. The Big Dance was next.</div>
+      <div class="arc-score">68-81 <span class="vs">vs Texas</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 19-20, 2026</div>
+      <div class="arc-chip win">NCAA Tournament R1</div>
+      <div class="arc-head">Thienou returns. Ole Miss rolls Gonzaga.</div>
+      <div class="arc-copy">Sira Thienou: 12 pts, 8 reb, 4 blk, 3 stl. The defensive identity was back. Ole Miss advanced comfortably as a 5-seed.</div>
+      <div class="arc-score">81-66 <span class="vs">vs Gonzaga</span></div>
+    </div>
+    <div class="arc-card">
+      <div class="arc-date">Mar 22, 2026</div>
+      <div class="arc-chip loss">NCAA Tournament R32</div>
+      <div class="arc-head">Williams Arena. 10,763 fans. 0.8 seconds.</div>
+      <div class="arc-copy">Cotie fouled out. Mara Braun tied it. Lattimore answered at 63. Then Amaya Battle hit from the elbow. Season over. 24-12. Five straight.</div>
+      <div class="arc-score">63-65 <span class="vs">vs Minnesota</span></div>
+    </div>
+  </div>
+  <div style="height:0;"></div>
+</div>
+
+<!-- ══ PANEL III · SEVEN GIFTS ══ -->
+<div class="panel" id="panel-2">
+  <div class="act-label">Act III · Seven Gifts</div>
+  <h2 class="panel-h2">What Each Senior Gave</h2>
+  <p class="panel-intro-1line">Seven women. Seven different programs before Oxford. They arrived in Ole Miss red and gave everything they had to this team, this city, this moment.</p>
+
+  <!-- jersey order: #3 #4 #8 #12 | #21 #22 #32(span2) -->
+  <div class="seniors-grid">
+
+    <!-- #3 PETERSON -->
+    <div class="sc-card">
+      <div class="sc-origin">UCF · #3</div>
+      <div class="sc-pos">Senior · Guard · Eufaula, Alabama</div>
+      <div class="sc-name">Kaitlin Peterson</div>
+      <div class="sc-gave">She gave her whole story. 2,967 HS points at Eufaula. Indiana. Then 21.4 PPG at UCF (best single-season avg in program history, 1,156 pts in two seasons). A graduate student and veteran defensive anchor who carried four programs worth of experience into every Oxford lineup.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">9.0</div><div class="sc-n-lbl">PPG Ole Miss</div></div>
+        <div class="sc-n"><div class="sc-n-val">21.4</div><div class="sc-n-lbl">PPG at UCF</div></div>
+        <div class="sc-n"><div class="sc-n-val">2,967</div><div class="sc-n-lbl">HS Career PTS</div></div>
+      </div>
+    </div>
+
+    <!-- #4 MURRAY -->
+    <div class="sc-card">
+      <div class="sc-origin">Wichita State · #4</div>
+      <div class="sc-pos">Senior · Forward · St. Louis, Missouri</div>
+      <div class="sc-name">Jayla Murray</div>
+      <div class="sc-gave">She gave a journey worth honoring. From Tampa Bay Tech's 2019 Florida State Championship to 14.1 PPG at Florida SW State (NJCAA 3rd Team All-American) to 12.4 PPG leading Wichita State in scoring (AAC All-Conference Second Team). From JUCO to the AAC to the SEC. She earned every step.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">14.1</div><div class="sc-n-lbl">PPG at JUCO</div></div>
+        <div class="sc-n"><div class="sc-n-val">12.4</div><div class="sc-n-lbl">PPG at Wichita St</div></div>
+      </div>
+    </div>
+
+    <!-- #8 LATTIMORE -->
+    <div class="sc-card">
+      <div class="sc-origin">Virginia · #8</div>
+      <div class="sc-pos">Senior · Center/Forward · Toronto, Ontario</div>
+      <div class="sc-name">Latasha Lattimore</div>
+      <div class="sc-gave">She gave Team 51 one last chance. The #38 recruit nationally brought rim protection (69 blocks at Virginia, 18th nationally) and six double-doubles including four consecutive at Ole Miss. Down in the R32, she tied it at 63 with seconds left. Her finest gift came in the final moments.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">63-63</div><div class="sc-n-lbl">She Tied It</div></div>
+        <div class="sc-n"><div class="sc-n-val">7.5</div><div class="sc-n-lbl">RPG</div></div>
+        <div class="sc-n"><div class="sc-n-val">6</div><div class="sc-n-lbl">Double-Doubles</div></div>
+      </div>
+    </div>
+
+    <!-- #12 IWUALA -->
+    <div class="sc-card">
+      <div class="sc-origin">UCLA · #12</div>
+      <div class="sc-pos">Senior · Forward · San Antonio, Texas</div>
+      <div class="sc-name">Christeen Iwuala</div>
+      <div class="sc-gave">She gave the argument. At UCLA: 3.3 PPG in 68 games, two career starts. At Ole Miss: 15.0 pts, 8.5 reb, ~58% FG, 8+ double-doubles. One of the SEC's most dominant posts. <em>"What you do in the dark will come out in the light."</em> She proved it every night.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">15.0</div><div class="sc-n-lbl">PPG</div></div>
+        <div class="sc-n"><div class="sc-n-val">8.5</div><div class="sc-n-lbl">RPG</div></div>
+        <div class="sc-n"><div class="sc-n-val">x4.5</div><div class="sc-n-lbl">Scoring Mult</div></div>
+      </div>
+    </div>
+
+    <!-- #21 POWE -->
+    <div class="sc-card">
+      <div class="sc-origin">Miss. State · #21</div>
+      <div class="sc-pos">Senior · Guard/Forward · Meridian, Mississippi</div>
+      <div class="sc-name">Debreasha Powe</div>
+      <div class="sc-gave">She gave her home state and her heart. A Mississippi native who crossed the state line from Starkville to Oxford. SEC All-Freshman 2023. 176 career three-pointers at State (5th in program history). Against Texas in the SEC semis: 6 rebounds, 2 blocks, 29 minutes of exactly what this team needed.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">176</div><div class="sc-n-lbl">Career 3PT at State</div></div>
+        <div class="sc-n"><div class="sc-n-val">6</div><div class="sc-n-lbl">REB vs Texas</div></div>
+        <div class="sc-n"><div class="sc-n-val">2</div><div class="sc-n-lbl">BLK vs Texas</div></div>
+      </div>
+    </div>
+
+    <!-- #22 DESHIELDS -->
+    <div class="sc-card">
+      <div class="sc-origin">Miss. State · #22</div>
+      <div class="sc-pos">Senior · Guard · Atlanta, Georgia</div>
+      <div class="sc-name">Denim DeShields</div>
+      <div class="sc-gave">She gave her best night when the stage was biggest. A legacy that runs deep: sister Diamond was the 3rd overall WNBA pick (2018) and a 2021 Chicago Sky champion. Denim reached 1,000 career points at Ole Miss and erupted for 20 pts on 72.7% shooting with 5 assists in the SEC semis.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">20</div><div class="sc-n-lbl">PTS vs Texas</div></div>
+        <div class="sc-n"><div class="sc-n-val">72.7%</div><div class="sc-n-lbl">FG% That Night</div></div>
+        <div class="sc-n"><div class="sc-n-val">1,000+</div><div class="sc-n-lbl">Career PTS</div></div>
+      </div>
+    </div>
+
+    <!-- #32 MCMAHON — featured, spans 2 -->
+    <div class="sc-card featured">
+      <div class="sc-origin">Ohio State · #32</div>
+      <div class="sc-pos">Senior · Forward · Dayton, Ohio</div>
+      <div class="sc-name">Cotie McMahon</div>
+      <div class="sc-gave">She gave 2,038 reasons. From Centerville HS (#23 recruit nationally) to Ohio State where she logged 1,484 career points, Big Ten Freshman of the Year, and 9 All-Big Ten honors, to Oxford where she became the 5th Rebel all-time to reach 2,000 career points. 19.8 PPG (4th in SEC). 7.0 RPG (career high). 46.7% FG (career season). A 39-point eruption against Tennessee. Naismith Trophy Late-Season Team. WNBA First Round prospect. Coach Yo called her generational. Oxford believed her. So did we.</div>
+      <div class="sc-nums">
+        <div class="sc-n"><div class="sc-n-val">19.8</div><div class="sc-n-lbl">PPG</div></div>
+        <div class="sc-n"><div class="sc-n-val">7.0</div><div class="sc-n-lbl">RPG Career High</div></div>
+        <div class="sc-n"><div class="sc-n-val">2,038</div><div class="sc-n-lbl">Career PTS</div></div>
+        <div class="sc-n"><div class="sc-n-val">39</div><div class="sc-n-lbl">Career High vs TEN</div></div>
+        <div class="sc-n"><div class="sc-n-val">3x</div><div class="sc-n-lbl">SEC POW</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div style="height:0;"></div>
+</div>
+
+<!-- ══ PANEL IV · 0.8 SECONDS ══ -->
+<div class="panel" id="panel-3">
+  <div class="act-label">Act IV · The Last 0.8 Seconds</div>
+  <h2 class="panel-h2">Minneapolis. March 22, 2026.</h2>
+  <p class="panel-intro-1line">Williams Arena. 10,763 fans. A 4-seed with home court. And Ole Miss, a 5-seed that beat top-5 programs three times this season, playing for a Sweet 16 berth.</p>
+
+  <div class="scoreboard">
+    <div class="sb-side ours"><div class="sb-school">Ole Miss</div><div class="sb-pts">63</div></div>
+    <div class="sb-mid">
+      <div class="sb-final">Final</div>
+      <div class="sb-context">NCAA R32 · Mar 22, 2026</div>
+    </div>
+    <div class="sb-side theirs"><div class="sb-school">Minnesota</div><div class="sb-pts">65</div></div>
+  </div>
+
+  <div class="quarter-line">
+    <div class="ql-cell team-label"></div>
+    <div class="ql-cell hdr">Q1</div><div class="ql-cell hdr">Q2</div><div class="ql-cell hdr">Q3</div><div class="ql-cell hdr">Q4</div><div class="ql-cell hdr">Total</div>
+    <div class="ql-cell team-label">Ole Miss</div>
+    <div class="ql-cell our-score">16</div><div class="ql-cell our-score">18</div><div class="ql-cell our-score">20</div><div class="ql-cell our-score">9</div><div class="ql-cell our-score total-score">63</div>
+    <div class="ql-cell team-label">Minnesota</div>
+    <div class="ql-cell">15</div><div class="ql-cell">17</div><div class="ql-cell">16</div><div class="ql-cell">17</div><div class="ql-cell total-score">65</div>
+  </div>
+
+  <div class="moment-grid">
+    <div class="moment-card">
+      <div class="moment-marker">~4:00</div>
+      <div class="moment-text"><strong>Cotie McMahon's fifth foul is called.</strong> Her defender was inside the restricted area. Oxford will debate this one for a long time. The engine went to the bench.</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-marker">61-61</div>
+      <div class="moment-text"><strong>Mara Braun ties it with a three.</strong> Minnesota, 7-of-12 from deep on the night, hits another. Everything Ole Miss built in the second half neutralized in a single possession.</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-marker">63-63</div>
+      <div class="moment-text"><strong>Latasha Lattimore answers.</strong> Ole Miss back in front. The kind of bucket that deserved to be the final one. Team 51 refusing to go quietly. It wasn't over yet.</div>
+    </div>
+    <div class="moment-card">
+      <div class="moment-marker">0.8 sec</div>
+      <div class="moment-text"><strong>Amaya Battle. From the elbow. Good.</strong> Minnesota 65, Ole Miss 63. The last Ole Miss shot caught the front of the rim as the buzzer sounded. Season over.</div>
+    </div>
+  </div>
+
+  <div class="key-stats">
+    <div class="ks-item"><div class="ks-val red">6-13</div><div class="ks-desc">Ole Miss from three. One of their best three-point nights all season.</div></div>
+    <div class="ks-item"><div class="ks-val navy">7-12</div><div class="ks-desc">Minnesota from three, including the Braun shot that tied it.</div></div>
+    <div class="ks-item"><div class="ks-val red">5th</div><div class="ks-desc">Most points in program history. This season.</div></div>
+    <div class="ks-item"><div class="ks-val navy">3x</div><div class="ks-desc">Wins over top-5 programs this season. They belonged.</div></div>
+  </div>
+
+  <div class="quotes-wrap">
+    <div class="pull-quote">
+      <div class="pq-text">"Disappointed how we ended the game. I thought that there were opportunities from the beginning of the game to the end of the game where we could have taken control of our destiny. I feel like their fans won them that game today. I'm not discrediting their play, with an awesome shot by the Battle kid at the end, but you couldn't hear. Just an incredible environment."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Postgame · March 22, 2026 · Source: Ole Miss Athletics</div>
+    </div>
+    <div class="pull-quote">
+      <div class="pq-text">"That's out of a Disney movie."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · On Amaya Battle's buzzer-beater · March 22, 2026 · Source: Ole Miss Athletics</div>
+    </div>
+  </div>
+  <div style="height:0;"></div>
+</div>
+
+<!-- ══ PANEL V · HOTTY TODDY ══ -->
+<div class="panel" id="panel-4">
+  <div class="act-label">Act V · The Love Letter</div>
+  <div class="closing-give">Give.</div>
+
+  <div class="closing-prose">
+    <p>Their word was Give. And across every practice, every charter flight, every night on the road in Birmingham, every late-season press conference, every night in Greenville, every possession in Minneapolis, <strong>Team 51 gave.</strong></p>
+
+    <p>They gave <span class="p-red">Kaitlin Peterson</span> the stage her four-school journey always earned. They gave <span class="p-navy">Jayla Murray</span> the proof that the path from JUCO to the SEC was worth every step. They gave <span class="p-red">Latasha Lattimore</span> a moment, 63-63, ball in her hands, season on the line, that she delivered perfectly. They gave <span class="p-navy">Christeen Iwuala</span> a home where her gifts could finally breathe. They gave <span class="p-red">Debreasha Powe</span> a program that needed every pound of physicality she carried from Mississippi State to Oxford. They gave <span class="p-navy">Denim DeShields</span> a night where the biggest game produced her greatest performance. They gave <span class="p-red">Cotie McMahon</span> a stage worthy of what she had always been. <strong>The ending just didn't cooperate.</strong></p>
+
+    <p>Before the ball ever went up in Minneapolis, the deck felt stacked. After eliminating Gonzaga, their head coach's public comments put a target squarely on Ole Miss's back. From the opening tip, the calls were uneven. The jump ball was a preview of what was coming. <span class="p-navy">Cotie McMahon's</span> fifth foul, with her defender clearly in the restricted area, was the kind of call that doesn't just end a possession. It ends a season. A program that had spent six years fighting for every inch of respect in this sport was asked, one more time, to beat not just the team in front of them but the entire environment around them. <strong>They fought anyway. That's who they are.</strong></p>
+
+    <p>Coach Yo took a program that went 0-14 in the SEC six years ago and built five straight tournament teams. She survived Winter Storm Fern, a four-game skid, and a mid-season injury to her most important defender, and still got this team to March standing. Three Round of 32 appearances in four years. That's not a rebuild. That's a revolution.</p>
+
+    <p>0.8 seconds. Team 51 deserved their storybook Sweet 16 moment. The story was written. The ending was stolen. What this team gave Oxford and this sport cannot be measured in a final score.</p>
+  </div>
+
+  <div class="closing-final" style="margin-top:36px;">THEY GAVE EVERYTHING. THAT'S THE ONLY KIND OF GIVE THAT MATTERS.</div>
+  <div class="hotty-line">Hotty Toddy · Team 51 · 24-12 · Five Straight</div>
+
+  <div class="quotes-wrap" style="margin-top:28px;">
+    <div class="pull-quote">
+      <div class="pq-text">"Disappointed how we ended the game. I thought that there were opportunities from the beginning of the game to the end of the game where we could have taken control of our destiny."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Final Postgame · March 22, 2026 · Source: Ole Miss Athletics</div>
+    </div>
+    <div class="pull-quote">
+      <div class="pq-text">"I just learned that they're a resilient group. They like each other, and they're focused on their goals. I asked them if they wanted to go home, and they said 'No, we want to stay on the road and do our thing.' That speaks volumes about their character."</div>
+      <div class="pq-attr">Coach Yolett McPhee-McCuin · Postgame vs Auburn, Birmingham · Feb 2, 2026 · Source: 247Sports</div>
+    </div>
+  </div>
+  <div style="height:0;"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-copy">Words, concept &amp; design by <strong>Kris E. Smith</strong> · Atlanta, Georgia · March 23, 2026 · Data sourced from <strong>Ole Miss Athletics</strong>, <strong>ESPN</strong>, <strong>SEC Sports</strong>, <strong>247Sports</strong>, <strong>The Rebel Walk</strong>, <strong>HottyToddy.com</strong> &amp; verified postgame press conferences.</div>
+  <div class="footer-badge">Ole Miss WBB · Team 51 · 2025-2026</div>
+</footer>
+
+<script>
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.querySelectorAll('.panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

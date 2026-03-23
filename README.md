@@ -2,7 +2,7 @@
 
 A season retrospective and love letter to the Ole Miss Women's Basketball Class of 2026.
 
-**Live at:** `https://theblacktechie.github.io/team51olemisswbball/`
+**Live at:** https://theblacktechie.github.io/team51olemisswbball/
 
 ---
 
